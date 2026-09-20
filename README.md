@@ -1,6 +1,6 @@
 # Plato's Pizza Sales Performance Dashboard
 
-![Plato's Pizza Sales Dashboard](Platos_Pizza_Sales_Dashboard.png)
+![Platos Pizza Sales Dashboard](Platos_Pizza_Sales_Dashboard.png)
 
 ## Project Overview
 An executive Power BI analytics dashboard built for Plato's Pizza to evaluate financial performance, identify peak operational bottlenecks, optimize menu strategy, and evaluate restaurant seating capacity utilization. Analyzing historical order records across multiple relational tables, the dashboard translates operational sales data into actionable business strategy.
