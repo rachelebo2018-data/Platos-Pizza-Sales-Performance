@@ -57,17 +57,17 @@ The report is powered by a **Star Schema** data model, connecting four datasets 
 ## Key DAX Measures
 
 ```dax
-// Total Volume of Pizzas Sold
-Total Pizzas Sold = SUM(order_details[Quantity])
+1. Total Pizzas Sold: Calculates the overall volume of pizzas sold across all completed customer transactions by aggregating line-item quantities.
+DAX: Total Pizzas Sold = SUM(order_details[Quantity])
 
-// Total Sales Revenue
-Total Revenue = SUMX(order_details, order_details[Quantity] * RELATED(pizzas[Price]))
+2. Total Sales Revenue: Computes the total gross business earnings by multiplying ordered quantities by individual unit prices across related lookup tables.
+DAX: Total Revenue = SUMX(order_details, order_details[Quantity] * RELATED(pizzas[Price]))
 
-// Total Unique Orders
-Total Orders = DISTINCTCOUNT(orders[Order ID])
+3. Total Unique Orders:  Counts the total number of distinct customer transactions placed, eliminating duplicate line items per order ID.
+DAX: Total Orders = DISTINCTCOUNT(orders[Order ID])
 
-// Average Order Value
-Average order value = DIVIDE([Total Revenue], [Total Orders])
+4. Average Order Value: Determines the average monetary value generated per individual transaction using a safe division formula to handle zero-denominator exceptions
+DAX: Average order value = DIVIDE([Total Revenue], [Total Orders])
 ```
 # Analysis & Key Insights
 
@@ -86,21 +86,28 @@ Average order value = DIVIDE([Total Revenue], [Total Orders])
 * **Pizza Production by Hour:** Peak hours show a dramatic spike in total pizzas produced, confirming these windows place maximum operational pressure on kitchen staff.
 * **Seating Capacity Constraint:** With only 15 tables (60 seats), high order volumes during rush hours require faster table turnover or reliance on takeaway orders to sustain volume without degrading customer experience.
 
-## 4. Product Performance Analysis (Quantity Sold)
+## 4. Product Performance & Revenue Concentration
 
-### Top 5 Best-Selling Pizzas
-1. The Classic Deluxe (~2.5K units)
-2. The Barbecue Chicken (~2.4K units)
-3. The Hawaiian (~2.4K units)
-4. The Pepperoni (~2.4K units)
-5. The Thai Chicken (~2.4K units)
+### Volume & Sales Distribution
+* **Peak Volume Concentration:** During the 4 major peak operational hours, Plato's Pizza produced ~24,000 pizzas, accounting for nearly **48% of total annual production**.
+* **Pareto Revenue Contribution:** The Top 5 best-selling pizza categories generate approximately **24.19% of total revenue**, whereas the Bottom 5 worst-selling pizzas contribute a combined **8.54%**.
 
-### Bottom 5 Worst-Selling Pizzas
-1. The Brie Carre (490 units)
-2. The Mediterranean (934 units)
-3. The Calabrese (937 units)
-4. The Spinach Supreme (950 units)
-5. The Soppressata (961 units)
+### Best-Selling Menu Performers (Top 5)
+1. **The Classic Deluxe** (2,453 units sold) – Drives primary volume due to broad consumer appeal and consistent order frequency across lunch and dinner shifts.
+2. **The Barbecue Chicken** (2,432 units sold) – High revenue contributor leveraging premium chicken pricing and strong dinner-shift demand.
+3. **The Hawaiian** (2,422 units sold) – Consistent core performer providing steady baseline sales.
+4. **The Pepperoni** (2,418 units sold) – Essential staple item maintaining predictable sales velocity across both weekdays and weekends.
+5. **The Thai Chicken** (2,371 units sold) – Strong specialty item that expands basket sizes and supports higher Average Order Values (AOV).
+
+### Underperforming Menu Items (Bottom 5)
+1. **The Brie Carre** (480 units sold) – Severe outlier, underperforming all other menu items by over 450 units, indicating extremely low consumer adoption and high risk of perishable inventory spoilage.
+2. **The Mediterranean** (934 units sold) – Low sales velocity suggests poor menu placement or niche ingredient appeal.
+3. **The Calabrese** (937 units sold) – Underperforms core classic offerings, tying up raw ingredient prep time.
+4. **The Spinach Supreme** (950 units sold) – Low turnover rate; requires promotion or recipe adjustment to justify ingredient storage costs.
+5. **The Soppressata** (961 units sold) – Minimal contribution to overall sales volume.
+
+### Strategic Inventory & Revenue Takeaway
+A small, core group of pizzas generates the vast majority of business returns. The bottom-tier items exhibit slow inventory turnover, which inflates holding costs and creates raw ingredient waste without meaningfully contributing to total revenue.
 
 ---
 
