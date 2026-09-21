@@ -68,6 +68,7 @@ Total Orders = DISTINCTCOUNT(orders[Order ID])
 
 // Average Order Value
 Average order value = DIVIDE([Total Revenue], [Total Orders])
+```
 # Analysis & Key Insights
 
 ## 1. KPI Overview – Business Health
